@@ -4,7 +4,7 @@ const userRoutes = require('./userRoutes');
 const thoughtRoutes = require('./thoughtRoutes');
 
 // Prefix routes with appropriate path
-router.use('/users', userRoutes);
-router.use('/thoughts', thoughtRoutes);
+router.use('/user', userRoutes);
+router.use('/thought', thoughtRoutes);
 
 module.exports = router;

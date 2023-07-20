@@ -1,65 +1,50 @@
 const { Schema, model } = require('mongoose');
 
-const reactionSchema = new Schema(
-  {
-    reactionId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
-    reactionBody: {
-      type: String,
-      required: true,
-      maxlength: 280,
-    },
-    username: {
-      type: String,
-      required: true,
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (createdAtVal) => createdAtVal.toISOString(),
-    },
-  },
-  {
-    toJSON: {
-      getters: true,
-    },
-  }
-);
-
+// Schema to create Post model
 const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
-      required: true,
-      minlength: 1,
-      maxlength: 280,
+      required: 'You need to provide a thought!',
+      minLength: 1,
+      maxLength: 280,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => createdAtVal.toISOString(),
     },
     username: {
       type: String,
-      required: true,
+      required: 'You need to provide a username!',
     },
-    reactions: [reactionSchema],
+    reactions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'reaction',
+      },
+    ],
   },
   {
     toJSON: {
       virtuals: true,
-      getters: true,
     },
     id: false,
   }
 );
 
-thoughtSchema.virtual('reactionCount').get(function () {
-  return this.reactions.length;
+thoughtSchema.virtual('formattedCreatedAt').get(function () {
+  const date = this.createdAt;
+  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 });
 
-const Thought = model('Thought', thoughtSchema);
+thoughtSchema
+  .virtual('reactionCount')
+  // Getter
+  .get(function () {
+    return this.reactions.length;
+  });
+
+// Initialize our Post model
+const Thought = model('thought', thoughtSchema);
 
 module.exports = Thought;
