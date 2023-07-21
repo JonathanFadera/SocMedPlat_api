@@ -5,12 +5,12 @@ Welcome to `SocMedPlat_API`, the backend for a cutting-edge social network web a
 
 ---
 ## Table of Contents
-- [SocMedPlat\_API](#socmedplat_api)
   - [Table of Contents](#table-of-contents)
   - [General Information](#general-information)
   - [Walk-through Video](#walk-through-video)
   - [Technologies Used](#technologies-used)
   - [Installation](#installation)
+  - [Questions](#questions)
 ---
 ## General Information 
 
@@ -57,4 +57,8 @@ To use the `SocMedPlat_API` application, first complete the following steps:
   - In the command line, type `node server.js` to start the server.
   - The application should now be up and running.
 
-These steps should guide you through the process of setting up and running the `SocMedPlat_api` successfully.
+---
+## Questions
+If there are any questions, feel free to contact my email at: ericsonhnc@gmail.com
+
+You can also find me on GitHub at: [JonathanFadera](https://www.github.com/JonathanFadera)
